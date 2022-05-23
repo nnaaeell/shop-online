@@ -34,6 +34,28 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Add</button>
+            <br>
+            <br>
+            <div class="row mt-3">
+
+                @foreach($carts as $cart)
+                <div class="card col-sm-5 bg-info text-light mb-4 mt-4" style="margin-left: 60px;">
+                    <div class="card-body">
+                      <h4 class="card-title">Name: {{$cart->name}}</h4>
+                      <p class="card-text">Value: {{$cart->number}}</p>
+                    </div>
+                  </div>
+                @endforeach
+                <br>
+                <hr width="100%">
+                <center>
+                    <div class="d-flex align-items-center justify-content-evenly">
+                        <p class="m-0 me-5">Total price: {{$total}}</p>
+                        <button class="btn btn-lg btn-primary">Buy</button>
+                    </div>
+                </center>
+            
+            </div>
         </form>
       </div>
 
@@ -47,18 +69,7 @@
 </div>
 
 
-<div class="row mt-3">
 
-    @foreach($carts as $cart)
-    <div class="card col-sm-5 bg-info text-light mb-4 mt-4" style="margin-left: 60px;">
-        <div class="card-body">
-          <h4 class="card-title">Name: {{$cart->name}}</h4>
-          <p class="card-text">Value: {{$cart->number}}</p>
-        </div>
-      </div>
-      @endforeach
-
-</div>
 
 </div>
 @endsection

@@ -26,7 +26,11 @@ class HomeController extends Controller
     public function index()
     {
         $carts = DB::table('carts')->select('name','number')->get();
-        return view('home')->with('carts',$carts);
+        $total = 0;
+        foreach($carts as $cart)
+            $total += $cart->number;    
+             
+        return view('home')->with('carts',$carts)->with('total',$total);
     }
 
         public function UploadData(Request $req){
