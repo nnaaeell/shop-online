@@ -25,21 +25,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $carts = DB::table('carts')->select('name','number')->get();
+        $carts = DB::table('carts')->select('name','price')->get();
         $total = 0;
         foreach($carts as $cart)
-            $total += $cart->number;    
+            $total += $cart->price;    
              
         return view('home')->with('carts',$carts)->with('total',$total);
     }
 
         public function UploadData(Request $req){
             $name = $req->get('name');
-            $value = $req->get('num');
+            $value = $req->get('price');
 
             $new_Cart_Row = new Cart;
             $new_Cart_Row->name = $name;
-            $new_Cart_Row->number = $value;
+            $new_Cart_Row->price = $value;
             $new_Cart_Row->save();
 
             return redirect()->route('home');

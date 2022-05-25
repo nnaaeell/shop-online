@@ -29,8 +29,8 @@
                 <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
             </div>
             <div class="mb-3">
-                <label for="num" class="form-label">Value:</label>
-                <input type="number" class="form-control" id="num" placeholder="Enter Value" name="num">
+                <label for="price" class="form-label">Value:</label>
+                <input type="number" class="form-control" id="price" placeholder="Enter Value" name="price">
             </div>
 
             <button type="submit" class="btn btn-primary">Add</button>
@@ -42,7 +42,7 @@
                 <div class="card col-sm-5 bg-info text-light mb-4 mt-4" style="margin-left: 60px;">
                     <div class="card-body">
                       <h4 class="card-title">Name: {{$cart->name}}</h4>
-                      <p class="card-text">Value: {{$cart->number}}</p>
+                      <p class="card-text">Value: {{$cart->price}}</p>
                     </div>
                   </div>
                 @endforeach
