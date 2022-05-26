@@ -18,3 +18,5 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/addToCart', [App\Http\Controllers\HomeController::class, 'UploadData'])->name('UploadData');
+Route::get('/toCategory/{catName}', [App\Http\Controllers\HomeController::class, 'toCategory'])->name('toCategory');
+Route::post('/UploadCat', [App\Http\Controllers\HomeController::class, 'UploadCat'])->name('UploadCat');

@@ -5,7 +5,7 @@
 
 <!-- Button to Open the Modal -->
 <center><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-  ADD TO CART
+  ADD Product
 </button>
 </center>
 <!-- The Modal -->
@@ -29,33 +29,31 @@
                 <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
             </div>
             <div class="mb-3">
-                <label for="price" class="form-label">Value:</label>
-                <input type="number" class="form-control" id="price" placeholder="Enter Value" name="price">
+                <label for="desc" class="form-label">Description:</label>
+                <input type="text" class="form-control" id="desc" placeholder="Enter Description" name="desc">
             </div>
-
-            <button type="submit" class="btn btn-primary">Add</button>
-            <br>
-            <br>
-            <div class="row mt-3">
-
-                @foreach($carts as $cart)
-                <div class="card col-sm-5 bg-info text-light mb-4 mt-4" style="margin-left: 60px;">
-                    <div class="card-body">
-                      <h4 class="card-title">Name: {{$cart->name}}</h4>
-                      <p class="card-text">Value: {{$cart->price}}</p>
-                    </div>
-                  </div>
+            <div class="mb-3">
+                <label for="num" class="form-label">Price:</label>
+                <input type="number" class="form-control" id="num" placeholder="Enter Price" name="num">
+            </div>
+            <div class="mb-3">
+              <label for="cat" class="form-label">Choose a category:</label>
+              <select class="form-control" name="cat" id="cat">
+                @foreach($cats as $cat)
+                <option>{{$cat->name}}</option>
                 @endforeach
-                <br>
-                <hr width="100%">
-                <center>
-                    <div class="d-flex align-items-center justify-content-evenly">
-                        <p class="m-0 me-5">Total price: {{$total}}</p>
-                        <button class="btn btn-lg btn-primary">Buy</button>
-                    </div>
-                </center>
-            
+              </select>
             </div>
+
+            <div class="mb-3">
+              <label for="img" class="form-label">Price:</label>
+              <input type="file" class="form-control" id="img" placeholder="Enter img" name="img" required>
+            </div>
+
+            <br>
+            <center><button type="submit" class="btn btn-primary">Add</button></center>
+ 
+
         </form>
       </div>
 
@@ -69,7 +67,22 @@
 </div>
 
 
+<center><div class="row mt-3">
 
+  @foreach($products as $product)
+  <div class="card col-sm-5 bg-info text-light mb-4 mt-4 ms-5">
+      <div class="card-body">
+        <h4 class="card-title">Product name: {{$product->name}}</h4>
+        <p class="card-text">Category: {{$product->category_id}}</p>
+        <p class="card-text">Price: {{$product->price}}</p>
+        <p class="card-text">Description: {{$product->desc}}</p>
+        
+      </div>
+    </div>
+  @endforeach
+
+
+</div></center>
 
 </div>
 @endsection

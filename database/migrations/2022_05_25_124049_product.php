@@ -15,11 +15,15 @@ class Product extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id();
+            //$table->unsignedBigInteger('cart_id')->nullable();
+            $table->unsignedBigInteger('category_id');
             $table->string('name');
+            $table->string('desc');
             $table->integer('price');
-            $table->string('category');
             $table->string('picture');
             $table->timestamps();
+           // $table->index('cart_id');
+            $table->index('category_id');
         });
     }
 

@@ -21,6 +21,46 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <!-- Button to Open the Modal -->
+
+  
+  <!-- The Modal -->
+  <div class="modal fade" id="catModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add category</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="{{ route('UploadCat') }}" method="POST">
+                @csrf
+    
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+                </div>
+    
+                <br>
+                <center><button type="submit" class="btn btn-primary">Add</button></center>
+     
+    
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -33,13 +73,28 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                            Category
+                        </button>
+                        <ul class="dropdown-menu">
+                            @guest
+                            @else
+                            @foreach($cats as $cat)
+                            <li><a class="dropdown-item" href="{{ route('toCategory', $cat->name) }}">{{$cat->name}}</a></li>
+                            @endforeach
+                            @endguest
+                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#catModal">
+                                Add category
+                            </a></li>
+                        </ul>
+                      </div>
+     
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <button class="btn btn-primary me-5">Cart</button>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
